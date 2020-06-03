@@ -1,3 +1,4 @@
+import 'package:bla_bla_car_clone/ui/screens/rides/rides_screen.dart';
 import 'package:bla_bla_car_clone/ui/utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -17,9 +18,7 @@ class _HomePageState extends State<HomePage> {
     currentTabIndex = 0;
 
     screens = [
-      Center(
-        child: Text('Tela 1'),
-      ),
+      RidesScreen(),
       Center(
         child: Text('Tela 2'),
       ),
@@ -47,7 +46,7 @@ class _HomePageState extends State<HomePage> {
         unselectedItemColor: Colors.grey,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.forum), // mdi-wechat
             title: Text('Caronas'),
           ),
           BottomNavigationBarItem(
@@ -70,9 +69,9 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(
-            top: 20.0,
-            left: 15.0,
+          padding: EdgeInsets.symmetric(
+            vertical: 20.0,
+            horizontal: 15.0,
           ),
           child: screens[currentTabIndex],
         ),
