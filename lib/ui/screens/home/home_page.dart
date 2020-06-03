@@ -1,4 +1,5 @@
 import 'package:bla_bla_car_clone/ui/screens/rides/rides_screen.dart';
+import 'package:bla_bla_car_clone/ui/screens/search/search_screen.dart';
 import 'package:bla_bla_car_clone/ui/utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -19,9 +20,7 @@ class _HomePageState extends State<HomePage> {
 
     screens = [
       RidesScreen(),
-      Center(
-        child: Text('Tela 2'),
-      ),
+      SearchScreen(),
       Center(
         child: Text('Tela 3'),
       ),
@@ -50,7 +49,7 @@ class _HomePageState extends State<HomePage> {
             title: Text('Caronas'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.search),
             title: Text('Procurar'),
           ),
           BottomNavigationBarItem(
