@@ -1,3 +1,4 @@
+import 'package:bla_bla_car_clone/ui/screens/offer/offer_ride_screen.dart';
 import 'package:bla_bla_car_clone/ui/screens/rides/rides_screen.dart';
 import 'package:bla_bla_car_clone/ui/screens/search/search_screen.dart';
 import 'package:bla_bla_car_clone/ui/utils/colors.dart';
@@ -21,9 +22,7 @@ class _HomePageState extends State<HomePage> {
     screens = [
       RidesScreen(),
       SearchScreen(),
-      Center(
-        child: Text('Tela 3'),
-      ),
+      OfferRideScreen(),
       Center(
         child: Text('Tela 4'),
       ),
@@ -38,7 +37,17 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentTabIndex,
-        onTap: (int index) => setState(() => currentTabIndex = index),
+        onTap: (int index) {
+          if (index != 2) {
+            setState(() => currentTabIndex = index);
+          } else {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) => OfferRideScreen(),
+              ),
+            );
+          }
+        },
         showSelectedLabels: true,
         showUnselectedLabels: true,
         selectedItemColor: ThemeColors.mainColor,
@@ -53,7 +62,7 @@ class _HomePageState extends State<HomePage> {
             title: Text('Procurar'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.add_circle_outline),
             title: Text('Oferecer'),
           ),
           BottomNavigationBarItem(
