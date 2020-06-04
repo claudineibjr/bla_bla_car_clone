@@ -89,9 +89,11 @@ class _RidesScreenState extends State<RidesScreen> {
                 ),
                 SizedBox(width: 10),
                 Column(
+                  mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
+                    // TODO: Adjust this
                     Text(
                       'Garça',
                       style: TextStyle(
@@ -136,6 +138,7 @@ class _RidesScreenState extends State<RidesScreen> {
     List<Widget> cards = [];
 
     cards.add(getCard());
+    cards.add(getCard());
 
     return cards;
   }
@@ -143,43 +146,53 @@ class _RidesScreenState extends State<RidesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            'Suas caronas',
-            style: TextStyle(
-              color: ThemeColors.secondaryColor,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: 20.0,
+            horizontal: 15.0,
           ),
-          SizedBox(height: 20),
-        ]
-          ..addAll(buildCards())
-          ..addAll(
-            [
-              SizedBox(height: 10),
-              GestureDetector(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      'Ver caronas arquivadas',
-                      style: TextStyle(
-                        color: ThemeColors.secondaryColor,
-                        fontWeight: FontWeight.w500,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  'Suas caronas',
+                  style: TextStyle(
+                    color: ThemeColors.secondaryColor,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 20),
+              ]
+                ..addAll(buildCards())
+                ..addAll(
+                  [
+                    SizedBox(height: 10),
+                    GestureDetector(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            'Ver caronas arquivadas',
+                            style: TextStyle(
+                              color: ThemeColors.secondaryColor,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          Icon(
+                            Icons.keyboard_arrow_right,
+                            color: ThemeColors.secondaryColor,
+                          ),
+                        ],
                       ),
-                    ),
-                    Icon(
-                      Icons.keyboard_arrow_right,
-                      color: ThemeColors.secondaryColor,
                     ),
                   ],
                 ),
-              ),
-            ],
+            ),
           ),
+        ),
       ),
     );
   }
