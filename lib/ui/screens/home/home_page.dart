@@ -1,3 +1,4 @@
+import 'package:bla_bla_car_clone/ui/screens/messages/messages_screen.dart';
 import 'package:bla_bla_car_clone/ui/screens/offer/offer_ride_screen.dart';
 import 'package:bla_bla_car_clone/ui/screens/rides/rides_screen.dart';
 import 'package:bla_bla_car_clone/ui/screens/search/search_screen.dart';
@@ -23,9 +24,7 @@ class _HomePageState extends State<HomePage> {
       RidesScreen(),
       SearchScreen(),
       OfferRideScreen(),
-      Center(
-        child: Text('Tela 4'),
-      ),
+      MessagesScreen(),
       Center(
         child: Text('Tela 5'),
       ),
@@ -54,7 +53,7 @@ class _HomePageState extends State<HomePage> {
         unselectedItemColor: Colors.grey,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.forum), // mdi-wechat
+            icon: Icon(Icons.format_quote), // mdi-wechat
             title: Text('Caronas'),
           ),
           BottomNavigationBarItem(
@@ -66,7 +65,36 @@ class _HomePageState extends State<HomePage> {
             title: Text('Oferecer'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Stack(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(right: 2.0),
+                  child: Icon(Icons.forum),
+                ),
+                Positioned(
+                  right: 0,
+                  child: Container(
+                    padding: EdgeInsets.all(1),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    constraints: BoxConstraints(
+                      minHeight: 14,
+                      minWidth: 14,
+                    ),
+                    child: Text(
+                      '8',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ],
+            ),
             title: Text('Mensagens'),
           ),
           BottomNavigationBarItem(
@@ -75,15 +103,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: 20.0,
-            horizontal: 15.0,
-          ),
-          child: screens[currentTabIndex],
-        ),
-      ),
+      body: screens[currentTabIndex],
     );
   }
 }
