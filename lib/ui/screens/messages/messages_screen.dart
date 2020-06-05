@@ -174,6 +174,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Mensagens'),
+        backgroundColor: ThemeColors.mainColor,
       ),
       body: SafeArea(
         child: Column(

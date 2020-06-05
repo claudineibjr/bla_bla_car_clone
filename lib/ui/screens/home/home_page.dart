@@ -1,5 +1,6 @@
 import 'package:bla_bla_car_clone/ui/screens/messages/messages_screen.dart';
 import 'package:bla_bla_car_clone/ui/screens/offer/offer_ride_screen.dart';
+import 'package:bla_bla_car_clone/ui/screens/profile/profile_screen.dart';
 import 'package:bla_bla_car_clone/ui/screens/rides/rides_screen.dart';
 import 'package:bla_bla_car_clone/ui/screens/search/search_screen.dart';
 import 'package:bla_bla_car_clone/ui/utils/colors.dart';
@@ -25,9 +26,7 @@ class _HomePageState extends State<HomePage> {
       SearchScreen(),
       OfferRideScreen(),
       MessagesScreen(),
-      Center(
-        child: Text('Tela 5'),
-      ),
+      ProfileScreen(),
     ];
   }
 
@@ -98,7 +97,7 @@ class _HomePageState extends State<HomePage> {
             title: Text('Mensagens'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.perm_identity),
             title: Text('Perfil'),
           ),
         ],
