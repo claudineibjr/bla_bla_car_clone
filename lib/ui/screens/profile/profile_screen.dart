@@ -1,4 +1,6 @@
+import 'package:bla_bla_car_clone/ui/screens/profile/take_picture_screen.dart';
 import 'package:bla_bla_car_clone/ui/utils/colors.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -28,6 +30,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return widgets;
   }
 
+  Future<void> modifyPicture() async {
+    // Ensure that plugin services are initialized so that `availableCameras()`
+    // can be called before `runApp()`
+    WidgetsFlutterBinding.ensureInitialized();
+
+    // Obtain a list of the available cameras on the device.
+    final cameras = await availableCameras();
+
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (BuildContext context) => TakePictureScreen(
+          cameras: cameras,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,23 +66,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Stack(
                     children: <Widget>[
                       Center(
-                        child: CircleAvatar(
-                          child: Stack(
-                            children: <Widget>[
-                              Positioned(
-                                bottom: 0,
-                                right: 0,
-                                child: Icon(
-                                  Icons.check_circle,
-                                  color: Colors.green,
+                        child: GestureDetector(
+                          onLongPress: () => modifyPicture(),
+                          child: CircleAvatar(
+                            child: Stack(
+                              children: <Widget>[
+                                Positioned(
+                                  bottom: 0,
+                                  right: 0,
+                                  child: Icon(
+                                    Icons.check_circle,
+                                    color: Colors.green,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
+                            backgroundImage: AssetImage(
+                              'assets/image/people/person1.png',
+                            ),
+                            radius: 30,
                           ),
-                          backgroundImage: AssetImage(
-                            'assets/image/people/person1.png',
-                          ),
-                          radius: 30,
                         ),
                       ),
                       Positioned(
@@ -81,8 +103,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 <PopupMenuEntry<String>>[
                               PopupMenuItem<String>(
                                 value: '1',
-                                child: Text(
-                                  'Modificar Foto',
+                                child: GestureDetector(
+                                  onTap: () => modifyPicture(),
+                                  child: Text(
+                                    'Modificar Foto',
+                                  ),
                                 ),
                               ),
                               PopupMenuItem<String>(

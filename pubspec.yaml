@@ -11,6 +11,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
+  camera:
+
+  path_provider:
+
+  path:
 
 
   cupertino_icons: ^0.1.3
